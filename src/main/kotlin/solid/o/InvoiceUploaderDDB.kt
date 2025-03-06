@@ -1,6 +1,6 @@
 package system.design.solid.o
 
-import system.design.solid.s.Invoice
+import system.design.solid.common.Invoice
 
 class InvoiceUploaderDDB : InvoiceUploader {
     override fun uploadInvoice(invoice: Invoice) {

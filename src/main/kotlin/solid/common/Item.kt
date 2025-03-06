@@ -1,4 +1,4 @@
-package system.design.solid.s
+package system.design.solid.common
 
 data class Item(
     val name: String,

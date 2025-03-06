@@ -1,6 +1,6 @@
 package system.design.solid.o
 
-import system.design.solid.s.Invoice
+import system.design.solid.common.Invoice
 
 class InvoicePrinterColor : InvoicePrinter {
     override fun printInvoice(invoice: Invoice) {
