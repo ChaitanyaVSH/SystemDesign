@@ -1,5 +1,9 @@
 package system.design.solid
 
+import system.design.solid.I.Correct.DataBaseEngineer
+import system.design.solid.I.Correct.WebDeveloper
+import system.design.solid.I.Incorrect.BackendEngineer
+import system.design.solid.I.Incorrect.FrontendEngineer
 import system.design.solid.o.InvoicePrinterColor
 import system.design.solid.o.InvoiceUploaderDDB
 import system.design.solid.common.Invoice
@@ -56,12 +60,45 @@ fun main() {
      */
     log()
     val listOfVehicles: List<Vehicle> = listOf(MotorCycle(), BullockCart())
-    listOfVehicles.forEach { vehicle: Vehicle ->
-        with(vehicle){
-            startEngine()
-            stopEngine()
+    log("Below code throws error because BullockCart is reducing the functionality of Vehicle.")
+    try {
+        listOfVehicles.forEach { vehicle: Vehicle ->
+            with(vehicle){
+                startEngine()
+                stopEngine()
+            }
         }
+    } catch (e: Error) {
+        log(e.message)
     }
-    log("Above code throws error because BullockCart is reducing the functionality of Vehicle.")
     log()
+
+
+    /**
+     * I: Interface Segregation principle.
+     *
+     * Interfaces should be defined at a granular level, so that implementations do not need to override
+     * unnecessary behaviour of the interfaces.
+     */
+    log()
+    val frontendEngineer = FrontendEngineer()
+    try {
+        frontendEngineer.designDataBase()
+    } catch (e: Error) {
+        log(e.message)
+    }
+
+    val backendEngineer = BackendEngineer()
+    try {
+        backendEngineer.writeFrontendCode()
+    } catch (e: Error) {
+        log(e.message)
+    }
+
+    val webDeveloper = WebDeveloper()
+    webDeveloper.writeFrontendCode()
+    webDeveloper.writeHTMLAndCSS()
+
+    val dataBaseEngineer = DataBaseEngineer()
+    dataBaseEngineer.designDataBase()
 }
