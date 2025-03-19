@@ -2,12 +2,7 @@ package system.design.solid.d
 
 import system.design.solid.common.Invoice
 
-class InvoiceService {
-    private val dataBase: DataBase;
-    init {
-        dataBase = DDBDataBase()
-    }
-
+class InvoiceService(val dataBase: DataBase) {
     fun saveInvoice(invoice: Invoice) {
         dataBase.save("Saving invoice. $invoice")
     }

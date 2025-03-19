@@ -10,6 +10,8 @@ import system.design.solid.common.Invoice
 import system.design.solid.s.InvoicePrinter
 import system.design.solid.s.InvoiceUploader
 import system.design.solid.common.Item
+import system.design.solid.d.CassandraDataBase
+import system.design.solid.d.DDBDataBase
 import system.design.solid.d.InvoiceService
 import system.design.solid.l.BullockCart
 import system.design.solid.l.MotorCycle
@@ -110,6 +112,11 @@ fun main() {
      * Abstraction should not depend on details, instead details should depend on abstraction.
      */
     log()
-    val invoiceService = InvoiceService()
+    val dataBase = DDBDataBase();
+    var invoiceService = InvoiceService(dataBase)
+    invoiceService.saveInvoice(invoice)
+
+    val cassandraDataBase = CassandraDataBase();
+    invoiceService = InvoiceService(cassandraDataBase)
     invoiceService.saveInvoice(invoice)
 }
