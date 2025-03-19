@@ -10,6 +10,7 @@ import system.design.solid.common.Invoice
 import system.design.solid.s.InvoicePrinter
 import system.design.solid.s.InvoiceUploader
 import system.design.solid.common.Item
+import system.design.solid.d.InvoiceService
 import system.design.solid.l.BullockCart
 import system.design.solid.l.MotorCycle
 import system.design.solid.l.Vehicle
@@ -101,4 +102,14 @@ fun main() {
 
     val dataBaseEngineer = DataBaseEngineer()
     dataBaseEngineer.designDataBase()
+
+    /**
+     * D: Dependency inversion principle
+     *
+     * High level modules should not depend on low level modules, instead they should depend on abstraction.
+     * Abstraction should not depend on details, instead details should depend on abstraction.
+     */
+    log()
+    val invoiceService = InvoiceService()
+    invoiceService.saveInvoice(invoice)
 }
