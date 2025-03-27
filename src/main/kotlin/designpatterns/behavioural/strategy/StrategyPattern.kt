@@ -1,5 +1,8 @@
 package system.design.designpatterns.behavioural.strategy
 
+import system.design.designpatterns.behavioural.strategy.withStrategy.NormalDriveStrategy
+import system.design.designpatterns.behavioural.strategy.withStrategy.SportsDriveStrategy
+import system.design.designpatterns.behavioural.strategy.withStrategy.Vehicle
 import system.design.designpatterns.behavioural.strategy.withoutStrategy.NormalVehicle
 import system.design.designpatterns.behavioural.strategy.withoutStrategy.OffroadVehicle
 import system.design.designpatterns.behavioural.strategy.withoutStrategy.SportsVehicle
@@ -22,4 +25,15 @@ fun main() {
 
     val normalVehicle = NormalVehicle()
     normalVehicle.drive()
+
+
+    // With strategy pattern
+    /**
+     * OffRoad vehicle uses sports drive functionality.
+     */
+    val offRoadVehicleWithStrategy = Vehicle(SportsDriveStrategy())
+    offRoadVehicleWithStrategy.drive()
+
+    val normalVehicleWithStrategy = Vehicle(NormalDriveStrategy())
+    normalVehicleWithStrategy.drive()
 }
