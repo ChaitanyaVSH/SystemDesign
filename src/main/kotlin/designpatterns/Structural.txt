@@ -1,4 +1,0 @@
-Adapter pattern
-Adapters vs Mappers
-Adapters are at service layer
-Mappers are to covert between internal entities.
